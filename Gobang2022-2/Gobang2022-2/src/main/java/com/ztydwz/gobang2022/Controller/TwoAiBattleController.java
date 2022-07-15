@@ -20,7 +20,7 @@ public class TwoAiBattleController extends MouseAdapter {
     boolean ifDRFiveDa = false;
 
     public TwoAiBattleController() {
-        aiDesignatedStart();
+        new DesignatedStart().aiDesignatedStart();
         putChess = whoPutChess.aiPutChess;
         playerType = ChessType.BLACK;
 
@@ -28,11 +28,11 @@ public class TwoAiBattleController extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+
         if (!gameFlag) {
             return;
         }
-        if (winFlag == -1)
-            new JudgeIfWin();
 
         FiveDa();
 
@@ -42,9 +42,15 @@ public class TwoAiBattleController extends MouseAdapter {
         }
         if (putChess == whoPutChess.aiPutChess) {
             whiteAiController();
+            if (winFlag == -1) {
+                new JudgeIfWin();
+            }
             putChess = whoPutChess.playerPutChess;
         } else {
             blackAiController();
+            if (winFlag == -1) {
+                new JudgeIfWin();
+            }
             putChess = whoPutChess.aiPutChess;
         }
 
@@ -56,9 +62,6 @@ public class TwoAiBattleController extends MouseAdapter {
         if (!gameFlag) {
             return;
         }
-        if (winFlag == -1)
-            new JudgeIfWin();
-
     }
 
 
@@ -83,25 +86,7 @@ public class TwoAiBattleController extends MouseAdapter {
         }
     }
 
-    public void aiDesignatedStart() {
-        gameFlag = true;
-        Map[7][7] = 1;
-        Map[6][7] = 2;
-        Map[6][8] = 1;
-        Pointer pointer1 = pointers[7][7];
-        Pointer pointer2 = pointers[6][7];
-        Pointer pointer3 = pointers[6][8];
-        pointer1.setHasChess(true);
-        pointer2.setHasChess(true);
-        pointer3.setHasChess(true);
 
-        Chess chess1 = new Chess(pointer1.getX(), pointer1.getY(), ChessType.BLACK);
-        Chess chess2 = new Chess(pointer2.getX(), pointer2.getY(), ChessType.White);
-        Chess chess3 = new Chess(pointer3.getX(), pointer3.getY(), ChessType.BLACK);
-        chessList.add(chess1);
-        chessList.add(chess2);
-        chessList.add(chess3);
-    }
 
 
     public void chooseDRChess() {

@@ -18,6 +18,8 @@ public class FreeStartController extends MouseAdapter {
         }
         if (putChess == whoPutChess.playerPutChess) {               //玩家回合
             if (chessController.PlayerPutChess(e.getX(), e.getY())) {   //确保玩家棋子已经下了
+                if (winFlag == -1)
+                    new JudgeIfWin();
                 putChess = whoPutChess.aiPutChess;
             }
         }
@@ -29,8 +31,7 @@ public class FreeStartController extends MouseAdapter {
         if (!gameFlag) {
             return;
         }
-        if (winFlag == -1)
-            new JudgeIfWin();
+
         pointerController.changePointerShow(e.getX(), e.getY());
         if (putChess == whoPutChess.aiPutChess) {
             chessController.AiPutChess();

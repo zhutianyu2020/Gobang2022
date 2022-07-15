@@ -19,5 +19,6 @@ public class GameFrame extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);  //居中
         setResizable(false);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //设置关闭模式
     }
 }

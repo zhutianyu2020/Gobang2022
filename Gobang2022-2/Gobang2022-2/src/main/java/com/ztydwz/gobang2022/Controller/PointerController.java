@@ -21,7 +21,6 @@ public class PointerController {
                 pointer.setShow(pointer.isShow(x, y) && !pointer.isHasChess());//判断指示器位置是否正确
             }
         }
-
     }
 
 }

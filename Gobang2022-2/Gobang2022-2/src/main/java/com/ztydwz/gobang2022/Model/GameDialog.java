@@ -1,5 +1,7 @@
 package main.java.com.ztydwz.gobang2022.Model;
 
+import main.java.com.ztydwz.gobang2022.View.Option;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,6 +30,7 @@ public class GameDialog extends JDialog {
 
         JLabel label2 = new JLabel("开局选择:");
         JRadioButton choose3 = new JRadioButton("人机指定开局");
+        choose3.setSelected(true);
         JRadioButton choose4 = new JRadioButton("人机自由开局");
         JRadioButton choose5 = new JRadioButton("双人对战");
         JRadioButton choose501 = new JRadioButton("自动对战");
@@ -40,7 +43,7 @@ public class GameDialog extends JDialog {
         label2.setFont(font);
         label2.setBounds(0, 60, 100, 40);           //这些都是自定义控件布局
         choose3.setBounds(150, 55, 100, 50);
-        choose3.setSelected(true);
+
         choose4.setBounds(250, 55, 100, 50);
         choose5.setBounds(350, 55, 100, 50);
         choose501.setBounds(425, 55, 100, 50);
@@ -48,6 +51,7 @@ public class GameDialog extends JDialog {
 
         JLabel label3 = new JLabel("禁手选择:");
         JRadioButton choose6 = new JRadioButton("有禁手");
+        choose6.setSelected(true);
         JRadioButton choose7 = new JRadioButton("无禁手");
         ButtonGroup group3 = new ButtonGroup();
         group3.add(choose6);           // 按钮组，只有这样才能互斥
@@ -71,6 +75,8 @@ public class GameDialog extends JDialog {
                 playerType = ChessType.White;
                 aiType = ChessType.BLACK;
                 putChess = whoPutChess.aiPutChess;
+            } else if (!choose1.isSelected() && !choose2.isSelected()) {
+                new Option().createOption("请选择先后手");
             }
 
             if (choose3.isSelected()) {
@@ -82,6 +88,12 @@ public class GameDialog extends JDialog {
             } else if (choose501.isSelected()) {
                 gameMode = GameMode.twoAiPlayerBattle;
                 aiType = ChessType.BLACK;
+            }
+
+            if (choose6.isSelected()) {
+                ifForbiddenHandOpen = true;
+            } else if (choose7.isSelected()) {
+                ifForbiddenHandOpen = false;
             }
             gamePanel.createListenMouseListener();
             this.setVisible(false);

@@ -17,12 +17,19 @@ public class TwoPlayerBattleController extends MouseAdapter {
         if (!gameFlag) {
             return;
         }
-        chessController.PlayerPutChess(e.getX(), e.getY());
-        if (playerType == ChessType.BLACK) {
-            playerType = ChessType.White;
-        } else {
-            playerType = ChessType.BLACK;
+
+        if (chessController.PlayerPutChess(e.getX(), e.getY())) {   //确保玩家棋子已经下了
+            if (winFlag == -1) {
+                new JudgeIfWin();
+            }
+            if (playerType == ChessType.BLACK) {
+                playerType = ChessType.White;
+            } else {
+                playerType = ChessType.BLACK;
+            }
         }
+
+
     }
 
     @Override
@@ -30,9 +37,7 @@ public class TwoPlayerBattleController extends MouseAdapter {
         if (!gameFlag) {
             return;
         }
-        if (winFlag == -1) {
-            new JudgeIfWin();
-        }
+
         pointerController.changePointerShow(e.getX(), e.getY());
     }
 }

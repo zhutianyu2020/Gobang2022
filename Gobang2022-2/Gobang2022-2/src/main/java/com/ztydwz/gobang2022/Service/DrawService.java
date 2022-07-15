@@ -75,7 +75,7 @@ public class DrawService {
         char character = 'A';
         for (int i = 0; i < 15; i++) {
             graphics.drawString(String.valueOf(character++), i * distance + start - 5, start + distance * (lineNumber - 1) + 15);
-            if (i < 9) {
+            if (i < 6) {
                 graphics.drawString(String.valueOf(15 - i), start - 23, i * distance + start + 5);
             } else {
                 graphics.drawString(String.valueOf(15 - i), start - 15, i * distance + start + 5);

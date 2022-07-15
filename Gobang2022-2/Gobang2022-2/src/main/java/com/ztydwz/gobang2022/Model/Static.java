@@ -28,6 +28,9 @@ public class Static {
     public static List<Integer> dRFiveDaList = new ArrayList<>(); //对方五手N打的坐标集合
     public static int winFlag = -1; //
     public static boolean gameFlag = false; //
+    public static boolean ifForbiddenHand = false; //是否有禁手
+    public static boolean ifForbiddenHandOpen = true; //是否开启禁手检测
+    public static boolean ifAllowForbiddenHandOpen = false; //是否允许程序下禁手
 
     public enum whoPutChess {
         aiPutChess, playerPutChess

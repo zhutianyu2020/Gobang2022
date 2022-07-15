@@ -25,7 +25,9 @@ public class DesignatedStartController extends MouseAdapter {
 
     public DesignatedStartController() {
         if (putChess == whoPutChess.aiPutChess) {
-            aiDesignatedStart();
+            new DesignatedStart().aiDesignatedStart();
+            putChess = whoPutChess.playerPutChess;
+            exchange();
         } else {
             ifPlayerDesignatedStart = true;
         }
@@ -39,6 +41,10 @@ public class DesignatedStartController extends MouseAdapter {
             return;
         }
 
+        if (winFlag == -1) {
+            new JudgeIfWin();
+        }
+
         if (ifPlayerDesignatedStart) {
             PlayerDesignatedStart(e);
         }
@@ -47,6 +53,9 @@ public class DesignatedStartController extends MouseAdapter {
         if (ifFiveDa) {                              //选择要保留的棋子
             playerType = ChessType.BLACK;
             if (chessController.PlayerPutChess(e.getX(), e.getY())) {   //确保玩家棋子已经下了
+                if (winFlag == -1) {
+                    new JudgeIfWin();
+                }
                 chooseFiveDa();
                 putChess = whoPutChess.playerPutChess;
                 playerType = ChessType.White;
@@ -98,8 +107,7 @@ public class DesignatedStartController extends MouseAdapter {
         if (!gameFlag) {
             return;
         }
-        if (winFlag == -1)
-            new JudgeIfWin();
+
         FiveDa();
         diRenFiveDa();
         pointerController.changePointerShow(e.getX(), e.getY());
@@ -112,27 +120,6 @@ public class DesignatedStartController extends MouseAdapter {
         }
     }
 
-    public void aiDesignatedStart() {
-        gameFlag = true;
-        Map[7][7] = 1;
-        Map[6][7] = 2;
-        Map[6][8] = 1;
-        Pointer pointer1 = pointers[7][7];
-        Pointer pointer2 = pointers[6][7];
-        Pointer pointer3 = pointers[6][8];
-        pointer1.setHasChess(true);
-        pointer2.setHasChess(true);
-        pointer3.setHasChess(true);
-
-        Chess chess1 = new Chess(pointer1.getX(), pointer1.getY(), ChessType.BLACK);
-        Chess chess2 = new Chess(pointer2.getX(), pointer2.getY(), ChessType.White);
-        Chess chess3 = new Chess(pointer3.getX(), pointer3.getY(), ChessType.BLACK);
-        chessList.add(chess1);
-        chessList.add(chess2);
-        chessList.add(chess3);
-        putChess = whoPutChess.playerPutChess;
-        exchange();
-    }
 
     public void FiveDa() {
         if (chessList.size() == 4 && aiType == ChessType.BLACK && !ifFiveDa) {

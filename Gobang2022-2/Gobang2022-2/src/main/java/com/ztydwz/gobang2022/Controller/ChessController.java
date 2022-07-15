@@ -3,6 +3,7 @@ package main.java.com.ztydwz.gobang2022.Controller;
 import main.java.com.ztydwz.gobang2022.Model.Chess;
 import main.java.com.ztydwz.gobang2022.Model.ChessType;
 import main.java.com.ztydwz.gobang2022.Model.Pointer;
+import main.java.com.ztydwz.gobang2022.Model.Static;
 import main.java.com.ztydwz.gobang2022.Service.AI;
 
 import static main.java.com.ztydwz.gobang2022.Model.Static.*;
@@ -31,6 +32,9 @@ public class ChessController {
             for (int j = 0; j < COLS; j++) {
                 Pointer pointer = pointers[i][j];
                 if (pointer.isShow(x, y) && !pointer.isHasChess()) {
+                    if (ifForbiddenHandOpen) {
+                        Static.ifForbiddenHand = new AI().isForbiddenHand(i, j);
+                    }
                     Chess chess = new Chess(pointer.getX(), pointer.getY(), playerType);
                     if (playerType == ChessType.BLACK) {
                         Map[i][j] = 1;
@@ -39,7 +43,6 @@ public class ChessController {
                     }
                     chessList.add(chess);
                     pointer.setHasChess(true);
-                    new AI().isForbiddenHand(i, j);
                     return true;
                 }
             }
