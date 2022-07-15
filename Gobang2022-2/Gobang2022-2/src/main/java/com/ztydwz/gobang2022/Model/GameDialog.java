@@ -61,6 +61,21 @@ public class GameDialog extends JDialog {
         choose6.setBounds(150, 105, 100, 50);
         choose6.setSelected(true);
         choose7.setBounds(250, 105, 100, 50);
+
+        JLabel label4 = new JLabel("允许禁手:");
+        JRadioButton choose8 = new JRadioButton("允许");
+        choose6.setSelected(true);
+        JRadioButton choose9 = new JRadioButton("拒绝");
+        ButtonGroup group4 = new ButtonGroup();
+        group4.add(choose8);           // 按钮组，只有这样才能互斥
+        group4.add(choose9);
+        label4.setFont(font);
+        label4.setBounds(0, 110, 100, 40);           //这些都是自定义控件布局
+        choose8.setBounds(150, 105, 100, 50);
+        choose8.setSelected(true);
+        choose9.setBounds(250, 105, 100, 50);
+
+
         JButton confirmation = new JButton("确定");     //确定按钮
 
         confirmation.addActionListener((e) -> {
@@ -95,6 +110,15 @@ public class GameDialog extends JDialog {
             } else if (choose7.isSelected()) {
                 ifForbiddenHandOpen = false;
             }
+
+            if (choose8.isSelected()) {
+                ifAllowForbiddenHandOpen = true;
+                System.out.println("允许禁手");
+            } else if (choose9.isSelected()) {
+                ifAllowForbiddenHandOpen = false;
+                System.out.println("拒绝禁手");
+            }
+
             gamePanel.createListenMouseListener();
             this.setVisible(false);
         });
@@ -115,6 +139,11 @@ public class GameDialog extends JDialog {
         dialogPanel.add(label3);
         dialogPanel.add(choose6);
         dialogPanel.add(choose7);
+
+        dialogPanel.add(label4);
+        dialogPanel.add(choose7);
+        dialogPanel.add(choose8);
+
         dialogPanel.add(confirmation);
         //add(dialog);
         this.add(dialogPanel);
