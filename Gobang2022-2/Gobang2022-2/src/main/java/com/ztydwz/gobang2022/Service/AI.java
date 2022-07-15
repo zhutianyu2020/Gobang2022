@@ -80,7 +80,7 @@ public class AI implements AiInterface {
         int liveFour = shou.liveFour(Map, myType, i, j);
         int longSix = shou.longSix(Map, myType, i, j);
         int rushFour = shou.rushFour(Map, myType, i, j);
-        int jumpFour = shou.jumpFour(Map, myType, i, j);
+        //int jumpFour = shou.jumpFour(Map,myType,i,j);
 
         if (longSix == 1) {
 
@@ -124,9 +124,11 @@ public class AI implements AiInterface {
             gameFlag = false;
             return true;
         }
-        if (liveFour + rushFour + jumpFour >= 2) {
+        if (liveFour + rushFour >= 2) {
+            //if (liveFour + rushFour + jumpFour >= 2){
             JudgeIfWin judgeIfWin = new JudgeIfWin();
             judgeIfWin.victory(Map, gameFrame);
+
             System.out.println("禁手！");
             new Option().createOption("四、四禁手");
             winFlag = 3 - myType;
@@ -136,8 +138,11 @@ public class AI implements AiInterface {
         }
         System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
                 "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
+                "，新增长连数：" + longSix + "，新增冲四+跳四数：" + rushFour);
+        /*System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
+                "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
                 "，新增长连数：" + longSix + "，新增冲四数：" + rushFour + "，新增跳四数：" +
-                jumpFour);
+                jumpFour);*/
         return false;
     }
 

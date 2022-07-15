@@ -235,6 +235,7 @@ public class Shou {
         tempMap[x][y] = aiColor;
 
 
+
         int count = 0;
 
         // .....
@@ -294,7 +295,6 @@ public class Shou {
 
         return count;
     }
-
     /*private int getRangeGrade(int[][] board,int aiColor,int[] range){
         // 5×5 (0,0)(4,4)/(4,5)
         // 9×9 (0,0)(8×8)
@@ -2132,6 +2132,42 @@ public class Shou {
                     } catch (Exception e) {
                     }
                 }
+                if (tempMap[x][i] == enemyColor) {
+                    try {
+                        if (tempMap[x][i + 1] == aiColor) {
+                            if (tempMap[x][i + 2] == aiColor) {
+                                if (tempMap[x][i + 3] == 0) {
+                                    if (tempMap[x][i + 4] == aiColor) {
+                                        if (tempMap[x][i + 5] == aiColor) {
+                                            if (tempMap[x][i + 6] == 0) {
+                                                count++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                    }
+                }
+                if (tempMap[x][i] == enemyColor) {
+                    try {
+                        if (tempMap[x][i + 1] == aiColor) {
+                            if (tempMap[x][i + 2] == 0) {
+                                if (tempMap[x][i + 3] == aiColor) {
+                                    if (tempMap[x][i + 4] == aiColor) {
+                                        if (tempMap[x][i + 5] == aiColor) {
+                                            if (tempMap[x][i + 6] == 0) {
+                                                count++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                    }
+                }
             }
         }
 
@@ -2170,7 +2206,42 @@ public class Shou {
                         }
                     } catch (Exception e) {
                     }
-
+                }
+                if (tempMap[i][y] == 0) {
+                    try {
+                        if (tempMap[i + 1][y] == aiColor) {
+                            if (tempMap[i + 2][y] == aiColor) {
+                                if (tempMap[i + 3][y] == aiColor) {
+                                    if (tempMap[i + 4][y] == 0) {
+                                        if (tempMap[i + 5][y] == aiColor) {
+                                            if (tempMap[i + 6][y] == enemyColor) {
+                                                count++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                    }
+                }
+                if (tempMap[i][y] == 0) {
+                    try {
+                        if (tempMap[i + 1][y] == aiColor) {
+                            if (tempMap[i + 2][y] == 0) {
+                                if (tempMap[i + 3][y] == aiColor) {
+                                    if (tempMap[i + 4][y] == aiColor) {
+                                        if (tempMap[i + 5][y] == aiColor) {
+                                            if (tempMap[i + 6][y] == enemyColor) {
+                                                count++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                    }
                 }
                 if (tempMap[i][y] == enemyColor) {
                     try {
@@ -2189,7 +2260,42 @@ public class Shou {
                         }
                     } catch (Exception e) {
                     }
-
+                }
+                if (tempMap[i][y] == enemyColor) {
+                    try {
+                        if (tempMap[i + 1][y] == aiColor) {
+                            if (tempMap[i + 2][y] == aiColor) {
+                                if (tempMap[i + 3][y] == 0) {
+                                    if (tempMap[i + 4][y] == aiColor) {
+                                        if (tempMap[i + 5][y] == aiColor) {
+                                            if (tempMap[i + 6][y] == 0) {
+                                                count++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                    }
+                }
+                if (tempMap[i][y] == enemyColor) {
+                    try {
+                        if (tempMap[i + 1][y] == aiColor) {
+                            if (tempMap[i + 2][y] == aiColor) {
+                                if (tempMap[i + 3][y] == aiColor) {
+                                    if (tempMap[i + 4][y] == 0) {
+                                        if (tempMap[i + 5][y] == aiColor) {
+                                            if (tempMap[i + 6][y] == 0) {
+                                                count++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                    }
                 }
             }
         }
@@ -2334,7 +2440,6 @@ public class Shou {
                             }
                         }
                     } catch (Exception e) {
-
                     }
                 }
 
