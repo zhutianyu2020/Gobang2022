@@ -14,7 +14,7 @@ public class GameFrame extends JFrame {
         add(gamePanel);
         GameDialog gameDialog = new GameDialog(this);
         this.setJMenuBar(new MenuBar());
-        setTitle("黑白连珠-1.0");
+        setTitle("黑白连珠-2.07");
         setSize(800, 800);
         setVisible(true);
         setLocationRelativeTo(null);  //居中

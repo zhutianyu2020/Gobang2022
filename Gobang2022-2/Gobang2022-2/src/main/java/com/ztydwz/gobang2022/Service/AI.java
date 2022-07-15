@@ -71,78 +71,84 @@ public class AI implements AiInterface {
         int myType;
         if (playerType == ChessType.BLACK) {
             myType = 1;
-        } else {
-            myType = 2;
-        }
-        Shou shou = new Shou();
-        int liveThree = shou.newLiveThree(Map, myType, i, j);
-        int jumpLiveThree = shou.jumpLiveThree(Map, myType, i, j);
-        int liveFour = shou.liveFour(Map, myType, i, j);
-        int longSix = shou.longSix(Map, myType, i, j);
-        int rushFour = shou.rushFour(Map, myType, i, j);
-        //int jumpFour = shou.jumpFour(Map,myType,i,j);
+            Shou shou = new Shou();
+            int liveThree = shou.newLiveThree(Map, myType, i, j);
+            int jumpLiveThree = shou.jumpLiveThree(Map, myType, i, j);
+            int liveFour = shou.liveFour(Map, myType, i, j);
+            int longSix = shou.longSix(Map, myType, i, j);
+            int rushFour = shou.rushFour(Map, myType, i, j);
+            //int jumpFour = shou.jumpFour(Map,myType,i,j);
 
-        if (longSix == 1) {
+            if (longSix == 1) {
 
-            JudgeIfWin judgeIfWin = new JudgeIfWin();
-            judgeIfWin.victory(Map, gameFrame);
-            System.out.println("禁手！");
-            new Option().createOption("长连禁手");
-            winFlag = 3 - myType;
-            new Option().createOption(winFlag == 1 ? "黑棋获胜" : "白棋获胜");
-            gameFlag = false;
-            return true;
+                JudgeIfWin judgeIfWin = new JudgeIfWin();
+                judgeIfWin.victory(Map, gameFrame);
+                System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
+                        "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
+                        "，新增长连数：" + longSix + "，新增冲四+跳四数：" + rushFour);
+                System.out.println("禁手！");
+                new Option().createOption("长连禁手");
+                winFlag = 3 - myType;
+                new Option().createOption(winFlag == 1 ? "黑棋获胜" : "白棋获胜");
+                gameFlag = false;
+                return true;
+            }
+            /*if (liveThree + jumpLiveThree == 1 && rushFour + jumpFour + liveFour == 2){
+                JudgeIfWin judgeIfWin = new JudgeIfWin();
+                judgeIfWin.victory(Map,gameFrame);
+                System.out.println("禁手！");
+                new Option().createOption("四四、三禁手");
+                winFlag = 3 - myType;
+                new Option().createOption(winFlag == 1?"黑棋获胜":"白棋获胜");
+                gameFlag = false;
+                return true;
+            }
+            if (liveThree + jumpLiveThree == 2 && rushFour + jumpFour + liveFour == 1){
+                JudgeIfWin judgeIfWin = new JudgeIfWin();
+                judgeIfWin.victory(Map,gameFrame);
+                System.out.println("禁手！");
+                new Option().createOption("四三、三禁手");
+                winFlag = 3 - myType;
+                new Option().createOption(winFlag == 1?"黑棋获胜":"白棋获胜");
+                gameFlag = false;
+                return true;
+            }*/
+            //这个不确定
+            if (liveThree + jumpLiveThree >= 2) {
+                JudgeIfWin judgeIfWin = new JudgeIfWin();
+                judgeIfWin.victory(Map, gameFrame);
+                System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
+                        "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
+                        "，新增长连数：" + longSix + "，新增冲四+跳四数：" + rushFour);
+                System.out.println("禁手！");
+                new Option().createOption("三、三禁手");
+                winFlag = 3 - myType;
+                new Option().createOption(winFlag == 1 ? "黑棋获胜" : "白棋获胜");
+                gameFlag = false;
+                return true;
+            }
+            if (liveFour + rushFour >= 2) {
+                //if (liveFour + rushFour + jumpFour >= 2){
+                JudgeIfWin judgeIfWin = new JudgeIfWin();
+                judgeIfWin.victory(Map, gameFrame);
+                System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
+                        "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
+                        "，新增长连数：" + longSix + "，新增冲四+跳四数：" + rushFour);
+                System.out.println("禁手！");
+                new Option().createOption("四、四禁手");
+                winFlag = 3 - myType;
+                new Option().createOption(winFlag == 1 ? "黑棋获胜" : "白棋获胜");
+                gameFlag = false;
+                return true;
+            }
+            System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
+                    "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
+                    "，新增长连数：" + longSix + "，新增冲四+跳四数：" + rushFour);
+            /*System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
+                    "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
+                    "，新增长连数：" + longSix + "，新增冲四数：" + rushFour + "，新增跳四数：" +
+                    jumpFour);*/
         }
-        /*if (liveThree + jumpLiveThree == 1 && rushFour + jumpFour + liveFour == 2){
-            JudgeIfWin judgeIfWin = new JudgeIfWin();
-            judgeIfWin.victory(Map,gameFrame);
-            System.out.println("禁手！");
-            new Option().createOption("四四、三禁手");
-            winFlag = 3 - myType;
-            new Option().createOption(winFlag == 1?"黑棋获胜":"白棋获胜");
-            gameFlag = false;
-            return true;
-        }
-        if (liveThree + jumpLiveThree == 2 && rushFour + jumpFour + liveFour == 1){
-            JudgeIfWin judgeIfWin = new JudgeIfWin();
-            judgeIfWin.victory(Map,gameFrame);
-            System.out.println("禁手！");
-            new Option().createOption("四三、三禁手");
-            winFlag = 3 - myType;
-            new Option().createOption(winFlag == 1?"黑棋获胜":"白棋获胜");
-            gameFlag = false;
-            return true;
-        }*/
-        //这个不确定
-        if (liveThree + jumpLiveThree >= 2) {
-            JudgeIfWin judgeIfWin = new JudgeIfWin();
-            judgeIfWin.victory(Map, gameFrame);
-            System.out.println("禁手！");
-            new Option().createOption("三、三禁手");
-            winFlag = 3 - myType;
-            new Option().createOption(winFlag == 1 ? "黑棋获胜" : "白棋获胜");
-            gameFlag = false;
-            return true;
-        }
-        if (liveFour + rushFour >= 2) {
-            //if (liveFour + rushFour + jumpFour >= 2){
-            JudgeIfWin judgeIfWin = new JudgeIfWin();
-            judgeIfWin.victory(Map, gameFrame);
-
-            System.out.println("禁手！");
-            new Option().createOption("四、四禁手");
-            winFlag = 3 - myType;
-            new Option().createOption(winFlag == 1 ? "黑棋获胜" : "白棋获胜");
-            gameFlag = false;
-            return true;
-        }
-        System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
-                "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
-                "，新增长连数：" + longSix + "，新增冲四+跳四数：" + rushFour);
-        /*System.out.println("i:" + i + ",j:" + j + "，新增活三数：" + liveThree +
-                "，新增跳活三数：" + jumpLiveThree + "，新增活四数：" + liveFour +
-                "，新增长连数：" + longSix + "，新增冲四数：" + rushFour + "，新增跳四数：" +
-                jumpFour);*/
         return false;
     }
 
