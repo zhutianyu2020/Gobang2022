@@ -18,14 +18,14 @@ public class ExportRecord {
     public static List<String> record = new ArrayList<>(); //创建棋谱列表
 
     public ExportRecord() {
-        String first = "{[C5][先手参赛队B][后手参赛队W]";
+        String first = "{[D2][先手参赛队B][后手参赛队W]";
         String second = null;
         if (winFlag == 1) {
             second = "[先手胜]";
         } else if (winFlag == 2) {
             second = "[后手胜]";
         } else if (winFlag == 0) {
-            second = "平局";
+            second = "[平局]";
         }
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
