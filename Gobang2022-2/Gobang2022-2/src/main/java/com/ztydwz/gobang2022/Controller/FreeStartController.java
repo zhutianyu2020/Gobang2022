@@ -36,6 +36,9 @@ public class FreeStartController extends MouseAdapter {
         if (putChess == whoPutChess.aiPutChess) {
             chessController.AiPutChess();
             putChess = whoPutChess.playerPutChess;
+            if (winFlag == -1) {
+                new JudgeIfWin();
+            }
         }
     }
 }

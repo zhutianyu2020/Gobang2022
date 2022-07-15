@@ -41,10 +41,6 @@ public class DesignatedStartController extends MouseAdapter {
             return;
         }
 
-        if (winFlag == -1) {
-            new JudgeIfWin();
-        }
-
         if (ifPlayerDesignatedStart) {
             PlayerDesignatedStart(e);
         }
@@ -114,6 +110,9 @@ public class DesignatedStartController extends MouseAdapter {
         if (putChess == Static.whoPutChess.aiPutChess) {//ai回合
             chessController.AiPutChess();
             putChess = Static.whoPutChess.playerPutChess;
+            if (winFlag == -1) {
+                new JudgeIfWin();
+            }
         }
         if (ifDRFiveDa && num == 0) {
             chooseDRChess();
