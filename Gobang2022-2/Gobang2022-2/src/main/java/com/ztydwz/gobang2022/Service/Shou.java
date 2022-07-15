@@ -465,7 +465,7 @@ public class Shou {
 
                     temp = getGrade(board, aiColor, i, j);
 
-                    if (ifAllowForbiddenHandOpen) {
+                    if (!ifAllowForbiddenHandOpen) {
                         int liveThree = this.newLiveThree(Map, aiColor, i, j);
                         int jumpLiveThree = this.jumpLiveThree(Map, aiColor, i, j);
                         int liveFour = this.liveFour(Map, aiColor, i, j);

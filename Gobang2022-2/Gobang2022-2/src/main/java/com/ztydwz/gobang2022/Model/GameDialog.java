@@ -70,10 +70,10 @@ public class GameDialog extends JDialog {
         group4.add(choose8);           // 按钮组，只有这样才能互斥
         group4.add(choose9);
         label4.setFont(font);
-        label4.setBounds(0, 110, 100, 40);           //这些都是自定义控件布局
-        choose8.setBounds(150, 105, 100, 50);
+        label4.setBounds(0, 160, 100, 40);           //这些都是自定义控件布局
+        choose8.setBounds(150, 155, 100, 50);
         choose8.setSelected(true);
-        choose9.setBounds(250, 105, 100, 50);
+        choose9.setBounds(250, 155, 100, 50);
 
 
         JButton confirmation = new JButton("确定");     //确定按钮
@@ -141,8 +141,8 @@ public class GameDialog extends JDialog {
         dialogPanel.add(choose7);
 
         dialogPanel.add(label4);
-        dialogPanel.add(choose7);
         dialogPanel.add(choose8);
+        dialogPanel.add(choose9);
 
         dialogPanel.add(confirmation);
         //add(dialog);
