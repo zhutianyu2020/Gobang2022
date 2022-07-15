@@ -49,10 +49,10 @@ public class GameDialog extends JDialog {
         choose501.setBounds(425, 55, 100, 50);
 
 
-        JLabel label3 = new JLabel("禁手选择:");
-        JRadioButton choose6 = new JRadioButton("有禁手");
+        JLabel label3 = new JLabel("禁手检测:");
+        JRadioButton choose6 = new JRadioButton("开启");
         choose6.setSelected(true);
-        JRadioButton choose7 = new JRadioButton("无禁手");
+        JRadioButton choose7 = new JRadioButton("关闭");
         ButtonGroup group3 = new ButtonGroup();
         group3.add(choose6);           // 按钮组，只有这样才能互斥
         group3.add(choose7);

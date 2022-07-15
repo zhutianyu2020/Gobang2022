@@ -1,5 +1,8 @@
 package main.java.com.ztydwz.gobang2022.Service;//
 
+import static main.java.com.ztydwz.gobang2022.Model.Static.Map;
+import static main.java.com.ztydwz.gobang2022.Model.Static.ifAllowForbiddenHandOpen;
+
 /**
  * @author 寿豪泽
  */
@@ -15,6 +18,7 @@ public class Shou {
      * @return 返回一个坐标，即我发打出的棋的位置
      */
     int deep = 4;
+    static boolean isDoForbidden = false;
 
     public int[] getAnswer(int[][] map, int MAX_ROW, int MAX_COLUMN, int enemyColor, int aiColor) {
         //return minmax(deep,map,aiColor,Integer.MIN_VALUE,Integer.MAX_VALUE);
@@ -458,7 +462,19 @@ public class Shou {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
                 if (isEmpty(board, i, j)) {
+
                     temp = getGrade(board, aiColor, i, j);
+
+                    if (ifAllowForbiddenHandOpen) {
+                        int liveThree = this.newLiveThree(Map, aiColor, i, j);
+                        int jumpLiveThree = this.jumpLiveThree(Map, aiColor, i, j);
+                        int liveFour = this.liveFour(Map, aiColor, i, j);
+                        int longSix = this.longSix(Map, aiColor, i, j);
+                        int rushFour = this.rushFour(Map, aiColor, i, j);
+                        if (longSix == 1 || liveThree + jumpLiveThree >= 2 || liveFour + rushFour >= 2) {
+                            temp = Integer.MIN_VALUE;
+                        }
+                    }
                     if (temp > max) {
                         max = temp;
                         answer[1] = i;
